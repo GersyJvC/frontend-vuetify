@@ -7,27 +7,30 @@ const routes = [
   {
     path: '/estudantes',
     name: 'Estudantes',
-    component: EstudantesView
+    component: EstudantesView,
+    meta: { requiresAuth: true }
   },
   {
     path: '/docentes',
     name: 'Docentes',
-    component: DocentesView
+    component: DocentesView,
+    meta: { requiresAuth: true }
   },
   {
     path: '/asignaturas',
     name: 'Asignaturas',
-    component: AsignaturasView // ← nueva vista
+    component: AsignaturasView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../pages/LoginView.vue') // Crear esta vista para login
   },
   {
     path: '/',
     redirect: '/estudantes'
   }
 ]
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
 
 export default router
